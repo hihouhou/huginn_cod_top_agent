@@ -119,7 +119,7 @@ module Agents
     end
 
     def fetch(user)
-      encoded_user = URI::encode(user)
+      encoded_user = URI.encode_www_form_component(user)
       uri = URI.parse("https://app.wzstats.gg/v2/player?username=#{encoded_user}&platform=acti")
       request = Net::HTTP::Get.new(uri)
       request["User-Agent"] = "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:99.0) Gecko/20100101 Firefox/99.0"
